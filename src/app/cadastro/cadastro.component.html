@@ -1,0 +1,152 @@
+<section>
+    <div class="cadastro">
+        <p>Cadastrar Veículo</p>
+    </div>
+    <form class="d-sm-flex d-md-flex align-items-sm-center align-items-md-center flex-sm-column flex-md-column "  [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+        <div class="identificacao col-9 ">
+
+            <div class="d-flex justify-content-center mt-4">
+                <h2>Informações cadastrais</h2>
+            </div>
+            <div class="row justify-content-around mt-4">
+                <div class=" col-11 col-lg-5 col-xl-5 mt-sm-4 mt-md-4 ">
+                    <div class="flex">
+                        <label class="labels__decoration" for="modelo">Modelo</label>
+                    </div>
+                    <div>
+                    <input 
+                    type="text"
+                    id="modelo" 
+                    placeholder="Modelo" 
+                    class="form-control" 
+                    formControlName="modelo"
+                    [ngClass]="aplicaCssErro('modelo')" 
+                    >
+                        <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('modelo')"
+                            msgErro="Modelo obrigatório.">
+                        </app-campo-control-erro>
+                    </div>
+                </div>
+                <div class=" col-11 col-lg-5 col-xl-5 mt-sm-4 mt-md-4 ">
+                    <div class="flex">
+                        <label class="labels__decoration" for="ano">Ano</label>
+    
+                    </div>
+                    <div>
+                        <input 
+                        type="number" 
+                        class="form-control"
+                        [ngClass]="aplicaCssErro('ano')"   
+                        id="ano" 
+                        name="ano"
+                        formControlName="ano" 
+                        id="ano" 
+                        placeholder="2014"
+                        appLimitDigits
+                    >
+                    <div class="col-12 d-flex">
+                        <app-campo-control-erro [mostrarErro]="verificaAnoValido('ano')"
+                        msgErro="Ano inválido.">
+                        &nbsp;&nbsp;
+                    </app-campo-control-erro>
+                    <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('ano')"
+                        msgErro="Ano obrigatório.">
+                    </app-campo-control-erro>
+                    </div>
+                        
+    
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row justify-content-around mt-4">
+                <div class="col-11 col-lg-5 col-xl-5 ">
+                
+                    <div class="flex">
+                        <label class="labels__decoration" for="marca">Marca</label>
+                    </div>
+                    <div>
+                            <input 
+                            class="form-control"
+                            [ngClass]="aplicaCssErro('marca')" type="text"
+                            formControlName="marca" id="marca" placeholder="Marca"
+                        >
+                        <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('marca')"
+                            msgErro="Marca obrigatória.">
+                        </app-campo-control-erro>
+    
+                    </div>
+                </div>
+    
+    
+                <div class="col-11 col-lg-5 col-xl-5 mt-sm-4 mt-md-4 mt-lg-0  ">
+                    <div class="flex">
+                        <label class="labels__decoration" for="placa">Placa</label>
+                    </div>
+                    <div>
+                            <input 
+                            class="form-control"
+                            [ngClass]="aplicaCssErro('placa')" type="text"
+                            formControlName="placa" id="placa" placeholder="Placa"
+                        >
+                        <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('placa')"
+                            msgErro="Placa obrigatória.">
+                        </app-campo-control-erro>
+    
+                    </div>
+                </div>
+            </div>
+           
+
+            <div class="row justify-content-around mt-4 mb-5">
+                <div class="col-11 col-lg-5 col-xl-5">
+                    <div class="flex">
+                        <label class="labels__decoration" for="renavam">Renavam</label>
+    
+                    </div>
+                    <div>
+                            <input 
+                            class="form-control"
+                            [ngClass]="aplicaCssErro('renavam')" type="text"
+                            formControlName="renavam" id="renavam" placeholder="Renavam"
+                        >
+                        <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('renavam')"
+                            msgErro="Renavam obrigatório.">
+                        </app-campo-control-erro>
+    
+                    </div>
+                </div>
+    
+    
+                <div class="col-11 col-lg-5 col-xl-5 mt-sm-4 mt-md-4  mt-lg-0">
+                    <div class="flex">
+                        <label class="labels__decoration" for="chassi">Chassi</label>
+                    </div>
+                    <div>
+                        <input 
+                        class="form-control"
+                        [ngClass]="aplicaCssErro('chassi')" type="text"
+                        formControlName="chassi" id="chassi" placeholder="Chassi"
+                    >
+                        <app-campo-control-erro [mostrarErro]="verificaNotValidTouched('chassi')"
+                            msgErro="Estado Civil obrigatório.">
+                        </app-campo-control-erro>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cadastro col-sm-8 col-md-8">
+
+            <button type="button" class="btn btn-outline-danger col-sm-5 col-md-5" routerLink="/dashboard">Cancelar</button>
+            <button type="button" class="btn btn-primary col-sm-5 col-md-5" type="submit" [disabled]='!formulario.valid'>Salvar</button>
+
+        </div>
+    </form>
+</section>

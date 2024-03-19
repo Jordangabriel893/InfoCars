@@ -1,0 +1,41 @@
+@mixin for-ipad {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 950px) {
+    @content;
+  }
+}
+
+@mixin for-phone {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin for-pocket {
+  @media (max-width: 420px) {
+    @content;
+  }
+}
+.format-text {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 1vh;
+  @include for-mobile {
+    font-size: 1.1rem;
+  }
+
+  @include for-phone {
+    font-size: 1.1rem;
+  }
+  @include for-pocket{
+    font-size: 1.1rem;
+  }
+  @include for-ipad{
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,360 @@
+@mixin for-ipad {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-phone {
+  @media (max-width: 750px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin for-pocket {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+
+@mixin flx($property, $jty-cnt, $algn-itm, $position) {
+  display: flex;
+  #{$property}: $jty-cnt;
+  #{$algn-itm}: $position
+}
+
+
+section {
+  @include flx(align-items, center, flex-direction, column);
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(231, 231, 231, 0.863);
+
+
+  .indice {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+
+    &__contagem {
+      @include flx(justify-content, center, align-items, center);
+
+      h1 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.75rem;
+        color: #3c78f2;
+
+        @include for-phone {
+          font-size: 1.25rem;
+        }
+
+        @include for-mobile {
+          font-size: 0.8rem;
+        }
+      }
+
+      h1:nth-child(1) {
+        margin-right: 0.5vh;
+      }
+
+      h1:nth-child(2) {
+        font-weight: bold;
+      }
+    }
+
+    .search {
+      @include flx(justify-content, flex-end, align-items, center);
+      width: 50%;
+
+      &__input {
+        display: flex;
+        width: 80%;
+        
+
+        &__decoration {
+          display: flex;
+          width: 90%;
+          height: 4vh;
+          font-size: 1rem;
+          border-radius: 10px 0px 0px 10px;
+          border: 1px solid rgb(209, 209, 209);
+          border-right: none;
+          outline: none;
+          padding-left: 15px;
+
+          @include for-phone {
+            width: 80%;
+            font-size: 0.6rem;
+            height: 2.5vh;
+          }
+
+          @include for-mobile {
+            width: 80%;
+            font-size: 0.6rem;
+            height: 2.5vh;
+          }
+          @include for-pocket{
+            width: 80%;
+            height: 2.5vh;
+          }  
+        }
+
+        .search__button__decoration {
+          width: 10%;
+          background-color: white;
+          border: 1px solid rgb(209, 209, 209);
+          border-radius: 0px 10px 10px 0px;
+
+          @include for-phone {
+            width: 20%;
+            height: 2.5vh;
+          }
+          @include for-pocket{
+            width: 20%;
+            height: 2.5vh;
+          }           
+          svg {
+            color: rgb(184, 184, 184);
+            cursor: pointer;
+
+          }
+        }
+
+      }
+    }
+  }
+
+  .dashboard {
+    display: flex;
+    width: 90%;
+    height: auto;
+    background-color: rgb(245, 245, 245);
+    max-height: 580px;
+    overflow-y: auto;
+
+    @include for-mobile {
+      width: 90%;
+    }
+
+
+    table {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 150px;
+      @include for-mobile {
+        width: 100%;
+      }
+
+
+      tr {
+        border: 2px solid rgb(231, 231, 231);
+
+
+        td {
+          color: rgba(71, 71, 71, 0.781);
+          font-size: 1rem;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          padding-top: 1.5vh;
+          padding-bottom: 1.5vh;
+          padding-left: 3vh;
+
+          @include for-phone {
+            font-size: 1.3rem;
+            padding-left: 1.5vh;
+          }
+
+          @include for-mobile {
+            font-size: 1.3rem;
+            padding-left: 0.8vh
+          }
+          @include for-pocket{
+            font-size: 1.3rem;
+            padding-left: 0.3vh
+          }
+          @include for-ipad{
+            font-size: 1.3rem;
+          }
+
+
+        }
+
+        .table__titles {
+          font-size: 1rem;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-weight: bold;
+          color: #3c79f2d0;
+          padding-top: 3vh;
+
+          @include for-phone {
+            font-size: 1.3rem;
+          }
+
+          @include for-mobile {
+            font-size: 1.3rem;
+          }
+          @include for-ipad{
+            font-size: 1.3rem;
+          }
+
+        }
+
+      }
+
+      .dashboard__focus:hover {
+        border: 3px solid rgb(48, 48, 48);
+      }
+
+      .dashboard__focus td button {
+        margin-right: 3vh;
+        background-color: rgb(245, 245, 245);
+        border: none;
+
+
+      }
+      .button-edit{
+        display: flex;
+        justify-content: start;
+        cursor: pointer;
+      }
+      svg {
+        cursor: pointer;
+
+      }
+    }
+
+
+    .ficha {
+      position: absolute;
+      width: 90%;
+      top: 13vh;
+      background-color: rgb(245, 245, 245);
+
+      &__areas {
+        background-color: rgb(245, 245, 245);
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        width: 100%;
+
+        &__identificacao {
+          display: flex;
+          flex-direction: column;
+
+          &__cabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+              margin-right: 3vh;
+              background-color: rgb(245, 245, 245);
+              border: none;
+              cursor: pointer;
+            }
+          }
+        }
+
+        h1 {
+          font-size: 2rem;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          color: #3c78f2;
+          margin-top: 2vh;
+          margin-left: 2vh;
+          margin-bottom: 2vh;
+
+          @include for-phone {
+            font-size: 1.5rem;
+          }
+
+          @include for-mobile {
+            font-size: 1rem;
+          }
+
+        }
+
+        .linha {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-left: 2vh;
+          margin-bottom: 2vh;
+
+          div {
+            width: 33.3%;
+          }
+
+          p {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          }
+
+          &__individual {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-left: 2vh;
+            margin-bottom: 2vh;
+          }
+        }
+
+        label {
+          font-size: 1rem;
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          color: rgb(155, 155, 155);
+          margin-bottom: 1vh;
+
+          @include for-phone {
+            font-size: 0.7rem;
+          }
+
+          @include for-mobile {
+            font-size: 0.5rem;
+          }
+        }
+
+        p {
+          font-size: 1.2rem;
+
+          @include for-phone {
+            font-size: 0.8rem;
+          }
+
+          @include for-mobile {
+            font-size: 0.7rem;
+          }
+        }
+
+        &__endereco {
+          width: 100%;
+          height: 30vh;
+          border-top: 3px solid rgba(231, 231, 231, 0.863);
+
+        }
+
+      }
+    }
+
+  }
+          /* Altera a largura da barra de rolagem */
+          ::-webkit-scrollbar {
+            width: 5px; /* Largura da barra de rolagem */
+          }
+      
+          /* Estilo da alça da barra de rolagem */
+          ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Cor da alça */
+            border-radius: 5px; /* Arredondamento da alça */
+          }
+      
+          /* Estilo da área da barra de rolagem (opcional) */
+          ::-webkit-scrollbar-track {
+            background-color: #f1f1f1; /* Cor de fundo da área da barra de rolagem */
+          }
+          html {
+            scrollbar-width: thin; /* Largura da barra de rolagem */
+            scrollbar-color: #888 #f1f1f1; /* Cor da alça e da área da barra de rolagem */
+        }
+}
