@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CadastroService } from './service/cadastro.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -18,6 +18,7 @@ export class CadastroComponent implements OnInit {
     private cadastroSvc:CadastroService,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService
     ) {
       this.id = this.route.snapshot.params['id'];
       
@@ -25,7 +26,7 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id){
-      this.getCadastro()
+      this.getCadastro();
     }else{
       this.createForm();
     };
@@ -37,9 +38,11 @@ export class CadastroComponent implements OnInit {
     if(this.formulario.valid){
       if(!this.id){this.cadastroSvc.adicionaCadastro(this.formulario.value)};
       if(this.id){this.cadastroSvc.editarCadastro(this.formulario.value, this.id)}
-        this.router.navigate(['/dashboard']);
-    } 
-    
+      this.toastr.success('Cadastro Registrado com sucesso', 'Sucesso');
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.toastr.error('Ocorreu um erro ao tentar registrar o cadastro', 'Erro');
+    }
   }
   reset(){
     this.formulario.reset();

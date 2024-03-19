@@ -12,6 +12,7 @@ import { CampoControlErroComponent } from './cadastro/campo-control-erro/campo-c
 import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LimitDigitsDirective } from './diretivas/limit-digits.directive';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { LimitDigitsDirective } from './diretivas/limit-digits.directive';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule, 
-  
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
 
